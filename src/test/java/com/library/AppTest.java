@@ -1,8 +1,12 @@
 package com.library;
 
+import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Unit test for simple App.
@@ -34,5 +38,14 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
+    }
+
+    public void testLoanBook(){
+        Book book1 = new Book("Wiedzmin", "Sapkowski", false);
+        List<Book> libraryBooks = new ArrayList<Book>();
+        libraryBooks.add(book1);
+        Client bartek = new Client("Bartek", "Kaszuba");
+        bartek.loanBook(libraryBooks, "Wiedzmin");
+        Assert.assertEquals(1, bartek.getBooks().size());
     }
 }

@@ -40,4 +40,15 @@ public class Client {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
+
+    public void loanBook(List<Book> libraryBooks, String bookTitle){
+        for(int i=0;i<libraryBooks.size();i++){
+            if(bookTitle.equals(libraryBooks.get(i).getTitle()) && libraryBooks.get(i).getTaken() == false){
+                libraryBooks.get(i).setTaken(true);
+                books.add(libraryBooks.get(i));
+                break;
+            }
+        }
+
+    }
 }
