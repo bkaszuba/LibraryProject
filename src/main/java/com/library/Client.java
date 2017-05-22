@@ -49,6 +49,19 @@ public class Client {
                 break;
             }
         }
-
+    }
+    public void giveBackBook(List<Book> libraryBooks, String bookTitle){
+        for(int i=0; i<books.size();i++){
+            if(books.get(i).getTitle().equals(bookTitle)){
+                books.remove(i);
+                for(int j=0;j<libraryBooks.size();j++){
+                    if(libraryBooks.get(j).getTitle().equals(bookTitle)){
+                        libraryBooks.get(j).setTaken(false);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
     }
 }
