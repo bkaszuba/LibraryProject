@@ -1,6 +1,9 @@
 package com.library;
 
-import java.io.IOException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import java.beans.XMLEncoder;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,7 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws Exception
     {
         //Clients
         Client client1 = new Client("Bartek", "Kaszuba");
@@ -43,10 +46,25 @@ public class App
 
         client1.loanBook(libraryBooks,"Fajowe");
 
+        //Save to file
         try {
             Organizer.writeAllDataToFile(clientList, "allData.log");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //Serialize to XML
+        XMLEncoder encoder=null;
+        try{
+            encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream("serializedData.xml")));
+        }catch(FileNotFoundException fileNotFound){
+            System.out.println("ERROR: While Creating or Opening the File serializedData.xml");
+        }
+        encoder.writeObject(clientList);
+        encoder.close();
+
+        //Deserialize from XML
+        
+
     }
 }

@@ -13,6 +13,7 @@ public class Book {
         this.author = author;
         this.isTaken = isTaken;
     }
+    public Book() {};
 
     public String getTitle() {
         return title;

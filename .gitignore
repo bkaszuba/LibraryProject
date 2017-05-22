@@ -6,6 +6,8 @@ target
 # Log file
 *.log
 
+# XML file
+.xml
 
 # BlueJ files
 *.ctxt

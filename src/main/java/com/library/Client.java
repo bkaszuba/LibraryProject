@@ -16,6 +16,7 @@ public class Client {
         this.surname = surname;
         this.books = new ArrayList<Book>();
     }
+    public Client(){};
 
     public String getName() {
         return name;
