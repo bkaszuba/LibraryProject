@@ -54,17 +54,11 @@ public class App
         }
 
         //Serialize to XML
-        XMLEncoder encoder=null;
-        try{
-            encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream("serializedData.xml")));
-        }catch(FileNotFoundException fileNotFound){
-            System.out.println("ERROR: While Creating or Opening the File serializedData.xml");
-        }
-        encoder.writeObject(clientList);
-        encoder.close();
+        Organizer.XMLSerialize(clientList);
 
         //Deserialize from XML
-        
+        List<Client> clientDeserialize = new ArrayList<Client>();
+        clientDeserialize=Organizer.XMLDeserialize();
 
     }
 }
